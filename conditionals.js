@@ -132,35 +132,35 @@ $(document).ready(function () {
         // For face values 2 - 10, you can just print the number
         // Face value 1 is "Ace", 11 is "Jack", 12 is "Queen",
         // and 13 is "King"
-        if (faceValue == 1){
-            description = "Ace";
+        if (faceValue >= 13){
+            description = "King";
         }
-        else if (faceValue > 1 && faceValue < 11){
-            description = faceValue;
-        }
-        else if (faceValue == 11){
-            description = "Jack";
-        }
-        else if (faceValue == 12){
+        else if (faceValue >= 12){
             description = "Queen";
         }
-        else if (faceValue == 13){
-            description = "King";
+        else if (faceValue >= 11){
+            description = "Jack";
+        }
+        else if (faceValue >= 2){
+            description = faceValue;
+        }
+        else if (faceValue >= 1){
+            description = "Ace";
         }
 
         // For the suits, 1 is "Clubs", 2 is "Spades",
         // 3 is "Hearts", 4 is "Diamonds"
-        if (suit == 1){
-            description =+ " of Clubs";
+        if (suit >= 4){
+            description =+ " of Diamonds";
         }
-        else if (suit == 2){
-            description += " of Spades";
-        }
-        else if (suit == 3){
+        else if (suit >= 3){
             description += " of Hearts";
         }
-        else if (suit == 4){
-            description += " of Diamonds";
+        else if (suit >= 2){
+            description += " of Spades";
+        }
+        else if (suit >= 1){
+            description += " of Clubs";
         }
 
         // Print the card's description to the <p> with

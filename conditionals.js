@@ -66,29 +66,36 @@ $(document).ready(function () {
         var state = ($("#state").val()).toUpperCase();
 
         // Tax rates are: WI 5%, IL 8%, MN 7.5%, MI 5.5%
-        if (state === "WI"){
-            taxRate = 0.05;
-        }
-        else if (state === "IL"){
-            taxRate = 0.08;
-        }
-        else if (state === "MN"){
-            taxRate = 0.075;
-        }
-        else if (state === "MI"){
-            taxRate = 0.055;
+        var output;
+
+        switch (state){
+            case "WI":
+                taxRate = 0.05;
+                output = (purchaseAmount * taxRate).toFixed(2);
+                break;
+            case "IL":
+                taxRate = 0.08;
+                output = (purchaseAmount * taxRate).toFixed(2);
+                break;
+            case "MN":
+                taxRate = 0.075;
+                output = (purchaseAmount * taxRate).toFixed(2);
+                break;
+            case "MI":
+                taxRate = 0.055;
+                output = (purchaseAmount * taxRate).toFixed(2);
+                break;
+            default :
+                output = "Error";
+
         }
 
         // Calculate the sales tax amount and print to
         // the <p> with ID of "salesTaxOutput"
-        var totalTax = (purchaseAmount * taxRate).toFixed(2);
-        $("#salesTaxOutput").text(totalTax);
 
         // If the user enters a state not listed above,
         // print "Error" instead
-        if (state !== "WI" && state !== "IL" && state !== "MN" && state !== "MI"){
-            $("#salesTaxOutput").text("Error");
-        }
+            $("#salesTaxOutput").text(output);
 
     }
 
